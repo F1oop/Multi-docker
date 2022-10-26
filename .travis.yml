@@ -6,7 +6,7 @@ before_install:
   - docker build -t f1oop/react-test -f ./client/Dockerfile.dev ./cient
 
 script:
-  - docker run f1oop.docker-test npm test -- --coverage
+  - docker run -e CI=true  f1oop/docker-test npm run test -- --coverage
 
 after_success:
   - docker build -t f1oop/multi-client ./client
