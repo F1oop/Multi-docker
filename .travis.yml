@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t f1oop/react-test -f ./client/Dockerfile.dev ./cient
+  - docker build -t f1oop/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true  f1oop/docker-test npm run test -- --coverage
