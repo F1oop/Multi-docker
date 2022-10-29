@@ -1,4 +1,6 @@
 sudo: required
+language: generic
+
 services:
   - docker
 
@@ -14,10 +16,10 @@ after_success:
   - docker build -t f1oop/multi-server ./server
   - docker build -t f1oop/multi-worker ./worker
 # Log in to the docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin 
-# take those imaged and push them to docker hub
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+# Take those imaged and push them to docker hub
   - docker push f1oop/multi-client
-  - docker push f1oop/multi-ngnix
+  - docker push f1oop/multi-nginx
   - docker push f1oop/multi-server
   - docker push f1oop/multi-worker
 
@@ -25,7 +27,7 @@ deploy:
   provider: elasticbeanstalk
   region: 'eu-north-1'
   app: 'multi-docker'
-  env: 'Multidocker-env-1'
+  env: 'Multidocker-env'
   bucket_name: 'elasticbeanstalk-eu-north-1-598444950095'
   bucket_path: 'docker-multi'
   on:
