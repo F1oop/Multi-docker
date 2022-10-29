@@ -26,10 +26,10 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: 'eu-north-1'
-  app: 'multi-docker'
-  env: 'Multidocker-env'
+  app: 'Docker-multi'
+  env: 'Dockermulti-env'
   bucket_name: 'elasticbeanstalk-eu-north-1-598444950095'
-  bucket_path: 'docker-multi'
+  bucket_path: 'Docker-multi'
   on:
     branch: main
   access_key_id: $AWS_ACCESS_KEY
